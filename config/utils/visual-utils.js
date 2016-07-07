@@ -2,6 +2,7 @@
   'use strict';
 
   const fs = require('fs');
+  const path = require('path');
 
   const log = (message) => {
     console.log('\x1b[31m', message);
@@ -39,6 +40,10 @@
     });
 
     return dir + options.screenshotSuite + '/' + options.screenshotSuite;
+  };
+
+  const getScreenshotName = (basePath) => {
+    return path.join(process.cwd(), basePath);
   };
 
   const checkAccessibility = (options) => {
@@ -93,6 +98,7 @@
 
   module.exports = {
     compare: compare,
+    getScreenshotName: getScreenshotName,
     moveCursorOffScreen: browser => browser.moveToObject('body', 0, 0)
   };
 

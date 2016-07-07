@@ -13,6 +13,7 @@
     }
   ];
 
+  config.maxInstances = 1;
   config.plugins.webdrivercss.screenshotRoot = 'webdriver-screenshotslocal';
   config.plugins.webdrivercss.failedComparisonsRoot = 'webdriver-screenshotslocal-diffs';
   config.onPrepare = server.start;

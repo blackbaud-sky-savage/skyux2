@@ -56,7 +56,7 @@
     server.close();
     rimraf.sync('webdriver-screenshots*/**/*+(px|regression).png', {});
     if (bsLocal.isRunning()) {
-      bsLocal.stop();  
+      bsLocal.stop();
     }
   };
 
