@@ -37,17 +37,25 @@ const PrepareFallback = function () {
 
 module.exports = webpackMerge(commonConfig, {
   entry: {
-    'core': './src/core.ts'
+    'skyux': './src/core.ts'
   },
   output: {
     filename: '[name].js',
+    // library: 'skyux',
+    // libraryTarget: 'umd',
+    libraryTarget: 'umd',
     path: 'releases'
   },
+  externals: [{
+    '@angular/core': '@angular/core',
+    '@angular/common': '@angular/core',
+    'rxjs/Subject': 'rsjs/Subject'
+  }],
   plugins: [
     PrepareFallback,
-    new webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false },
-      mangle: { screw_ie8: true, keep_fnames: true }
-    })
+    // new webpack.optimize.UglifyJsPlugin({
+    //   compress: { warnings: false },
+    //   mangle: { screw_ie8: true, keep_fnames: true }
+    // })
   ]
 });
