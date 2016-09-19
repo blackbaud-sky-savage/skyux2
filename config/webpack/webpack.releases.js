@@ -37,14 +37,18 @@ const PrepareFallback = function () {
 
 module.exports = webpackMerge(commonConfig, {
   entry: {
-    'core': './src/core.ts'
+    'core': ['./src/core.ts']
   },
   output: {
     filename: '[name].js',
     path: 'releases'
   },
   plugins: [
-    PrepareFallback,
+    // PrepareFallback,
+    new webpack.DllPlugin({
+        path: path.resolve(__dirname, '..', '..', 'releases', '[name]-manifest.json'),
+        name: "[name]_[hash]"
+    }),
     new webpack.optimize.UglifyJsPlugin({
       compress: { warnings: false },
       mangle: { screw_ie8: true, keep_fnames: true }

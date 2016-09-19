@@ -51,8 +51,8 @@ module.exports = {
    * See: http://webpack.github.io/docs/configuration.html#entry
    */
   entry: {
-    'polyfills': './src/polyfills.ts',
-    'vendor': './src/vendor.ts'
+    'polyfills': ['./src/polyfills.ts'],
+    'vendor': ['./src/vendor.ts']
   },
 
   /*
